@@ -43,7 +43,7 @@ public class SwaggerConfig {
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
                 .title("API")
-                .description("[Bamdule] API")
+                .description("[Croffle] API")
                 .contact(new Contact("Croffle Swagger", "https://cube-d.github.io/croffle/", "vljh246v@gmail.com"))
                 .version("0.1")
                 .build();
