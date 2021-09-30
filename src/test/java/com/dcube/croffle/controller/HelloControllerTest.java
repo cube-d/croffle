@@ -24,5 +24,12 @@ class HelloControllerTest {
                 .andExpect(content().string(containsString("hello, world")));
     }
 
+    @Test
+    void requestCroffle() throws Exception {
+        mvc.perform(get("/croffle"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("hello, croffle")));
+    }
+
 
 }
