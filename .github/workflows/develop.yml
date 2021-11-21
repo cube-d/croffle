@@ -9,6 +9,10 @@ on:
 #  pull_request:
 #    branches: [ develop ]
 
+env:
+  S3_BUCKET_NAME: d-cube
+  PROJECT_NAME: d-cube
+
 jobs:
   build:
 
@@ -41,4 +45,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_IAM_MANAGER_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload to S3
-        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://d-cube/$GITHUB_SHA.zip
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
+      - name: Code Deploy
+        run: aws deploy create-deployment --application-name d-cube --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name develop --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
