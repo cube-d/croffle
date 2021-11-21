@@ -29,7 +29,7 @@ jobs:
         run: mkdir -p deploy
       # Jar 파일 복사
       - name: Copy Jar
-        run: cp  /home/runner/work/croffle/croffle/target/*.jar ./deploy
+        run: cp  /home/runner/work/croffle/croffle/target/*.jar .
       # 파일 압축
       - name: Make zip file
         run: zip -r ./$GITHUB_SHA.zip ./deploy
