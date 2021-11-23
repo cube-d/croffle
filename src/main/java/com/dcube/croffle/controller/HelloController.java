@@ -15,4 +15,9 @@ public class HelloController {
     public String croffle() {
         return "hello, croffle";
     }
+
+    @GetMapping("/croffle2")
+    public String croffle2() {
+        return "hello, croffle2";
+    }
 }
